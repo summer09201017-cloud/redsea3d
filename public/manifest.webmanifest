@@ -1,0 +1,14 @@
+{
+  "name": "紅海過乾地 Red Sea 3D",
+  "short_name": "紅海過乾地",
+  "description": "出埃及記 14 的 3D 聖經遊戲——摩西向海伸杖,水便分開;帶著百姓走乾地過紅海,一個也不失落。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2a4a68",
+  "theme_color": "#2a4a68",
+  "orientation": "landscape",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
