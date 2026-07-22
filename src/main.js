@@ -79,6 +79,10 @@ game.onEvent = (event) => {
       audio.splash(1);
       break;
     case "finish":
+      try { if (!['localhost','127.0.0.1'].includes(location.hostname)) {   // -done:玩完一局(t=本局秒數,/stats 使用次數與平均停留吃這個)
+        var __dt = Math.round((Date.now() - (window.__matchT0 || Date.now())) / 1000);
+        navigator.sendBeacon?.('https://hfpc-play-stats.summer09201017.workers.dev/api/ping?g=redsea3d-done&t=' + __dt);
+      } } catch (_) {}
       speakLine("以色列人看見耶和華向埃及人所行的大事,就敬畏耶和華,又信服他和他的僕人摩西。");
       ui.matchOverlay.classList.add("visible");
       ui.overlayEyebrow.textContent = "出埃及記 14:31";
@@ -206,7 +210,7 @@ function beginRun() {
   ui.controlsPanel.hidden = false;
   game.start();
 }
-ui.startButton.addEventListener("click", beginRun);
+ui.startButton.addEventListener("click", () => { window.__matchT0 = Date.now(); beginRun(); });   // -done beacon 用:本局開始時間
 ui.overlayReplayButton.addEventListener("click", () => { audio.uiTap(); ui.matchOverlay.classList.remove("visible"); beginRun(); });
 ui.overlayMenuButton.addEventListener("click", () => {
   audio.uiTap();
